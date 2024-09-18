@@ -1,27 +1,25 @@
-version: '3.8'
+version: '3'
+
 services:
-  appseed-app:
-    container_name: appseed_app
-    restart: always
-    build: .
-    networks:
-      - db_network
-      - web_network
-  nginx:
-    container_name: nginx
-    restart: always
-    image: "nginx:latest"
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASS}
     ports:
-      - "5085:5085"
+      - "5432:5432"
     volumes:
-      - ./nginx:/etc/nginx/conf.d
-    networks:
-      - web_network
-    depends_on: 
-      - appseed-app
-networks:
-  db_network:
-    driver: bridge
-  web_network:
-    driver: bridge
- 
+      - .:/code
+
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:8000 core.wsgi:application
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://${DB_USERNAME}:${DB_PASS}@db:5432/${DB_NAME}
