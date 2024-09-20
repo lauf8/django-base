@@ -23,3 +23,4 @@ services:
       - db
     environment:
       DATABASE_URL: postgres://${DB_USERNAME}:${DB_PASS}@db:5432/${DB_NAME}
+    entrypoint: ["/bin/bash", "./entrypoint.sh"]
