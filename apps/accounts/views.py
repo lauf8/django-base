@@ -16,17 +16,19 @@ from django.contrib.auth import logout
 
 
 class CustomLoginView(LoginView):
-    form_class = LoginForm  
-    template_name = 'accounts/login.html'
+    form_class = LoginForm
+    template_name = "accounts/login.html"
 
 
 def register(request):
     if request.method == "POST":
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data["email"]
-            password = form.cleaned_data["password"]
-            print(email, password)
+            form.save()
+            print("Account created successfully!")
+            return redirect("/accounts/login/")
+        else:
+            print("Register failed!")
     else:
         form = RegistrationForm()
 
