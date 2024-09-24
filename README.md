@@ -1,4 +1,4 @@
-# Kronos
+# Django Base
 Este projeto é uma base para a criação de um projeto Django usando Docker e PostgreSQL. O objetivo é fornecer uma estrutura inicial para quem deseja criar um projeto Django de forma rápida e eficiente utilizando contêineres, e com o layout do bootstrap 5.
 
 # Tecnologias Utilizadas
