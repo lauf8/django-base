@@ -22,7 +22,7 @@ Clone este repositório:
 git clone https://github.com/lauf8/django-base.git
 ```
 ```bash
-cd kronos-2
+cd django-base
 ```
 
 Renomei o arquivo .env copy para suas preferências, como por exemplo
