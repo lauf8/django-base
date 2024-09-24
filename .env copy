@@ -1,0 +1,7 @@
+DEBUG=True
+SECRET_KEY=x$_$t$-nv1m%2r%%gvmue#t87uejk!vh-^ajm=94%&w&+l47a^
+DB_NAME=kronos
+DB_USERNAME=postgres
+DB_PASS=2Vyv#%IF7A'0|onOc#OX2d2mk4
+DB_PORT=5432
+DB_HOST=db
